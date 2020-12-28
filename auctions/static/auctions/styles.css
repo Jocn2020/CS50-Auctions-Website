@@ -1,0 +1,15 @@
+body {
+    padding: 10px;
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+#layout {
+    background-image: url('layout background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
