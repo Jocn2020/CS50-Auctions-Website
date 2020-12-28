@@ -1,0 +1,20 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+    <h1>Watch List</h1>
+    <ol>
+        {% for listing in listings %}
+            <li class='list-group-item'>
+                <a href="{% url 'listing' listing.id %}"
+                class="list-group-item list-group-item-action active" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5>{{ listing.name }}</h5>
+                </div>
+                    <small>Description: {{ listing.desc }}</small>
+                    <div>Posted by: {{ listing.auctioneer.username }}</div>
+                </a>
+                <a href='{% url "remove_watchlist" listing.id %}'>Remove listing</a>
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}

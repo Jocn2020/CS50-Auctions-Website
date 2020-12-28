@@ -1,0 +1,32 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+    <h1>User Profile: {{ user.username }}</h1>
+    <div>Profile Picture</div>
+    <h4>{{ user.username }} Listings:</h4>
+    <ol>
+        {% for listing in listings %}
+            <li class='list-group-item'>
+                <a href="{% url 'listing' listing.id %}"
+                class="list-group-item list-group-item-action active" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5>{{ listing.name }}</h5>
+                </div>
+                    <small>Description: {{ listing.desc }}</small>
+                    <div>Posted by: {{ listing.auctioneer.username }}</div>
+                </a>
+            </li>
+        {% endfor %}
+    </ol>
+    <h4>{{ user.username }} Last Comments:</h4>
+    <ul>
+        {% for user_comment in comments %}
+            <li>
+                Post:
+                <a href='{% url "listing" user_comment.item.all.first.id %}'>{{ user_comment.item.all.first }}</a>, 
+                {{ user.username }}: {{ user_comment.comment }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'index' %}"> Back To HomePage</a>
+{% endblock %}

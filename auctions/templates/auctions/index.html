@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+    {% if tag %}
+        <h3>Tag: {{ tag }}</h3>
+    {% endif %}
+    <ol>
+        {% for listing in  Listings %}
+            <li class='list-group-item'>
+                <a href="{% url 'listing' listing.id %}"
+                class="list-group-item list-group-item-action active" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5>{{ listing.name }}</h5>
+                </div>
+                    <small>Description: {{ listing.desc }}</small>
+                    <div>Posted by: {{ listing.auctioneer.username }}</div>
+                </a>
+            </li>
+        {% endfor %}
+    </ol>
+    TODO
+{% endblock %}
